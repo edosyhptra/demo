@@ -14,7 +14,7 @@ Navigate to Security Hotspots. Pick CORS or the open redirect. Mark neither safe
 
 ## 4. Secrets and remediation (2 min)
 
-Show the fake token-shaped string. Emphasize it is inert, but real credentials must be revoked immediately, removed from history, and supplied at runtime via a secret manager or CI secret. Do not demonstrate real credentials.
+Open `src/demo-secrets.js` and show the fake GitHub PAT / Slack-token-shaped strings. Emphasize they are inert training fixtures, but real credentials must be revoked immediately, removed from history, and supplied at runtime via a secret manager or CI secret. Do not demonstrate real credentials.
 
 ## 5. Advanced Security: SCA, risks, SBOM, Advanced SAST (5 min)
 

@@ -10,7 +10,7 @@ A compact Node.js project for demonstrating SonarQube SAST, Security Hotspots, t
 | --- | --- |
 | SAST and taint analysis | `GET /diagnostics/ping` passes `req.query.host` to `exec`; `GET /documents` passes `req.query.path` to `readFileSync`. |
 | Security Hotspots | permissive CORS, `eval`, open redirect, and weak crypto in `src/server.js`. Review each finding in SonarQube rather than blindly resolving it. |
-| Secret detection | fake, inert GitHub-token-shaped value in `src/server.js`; it cannot authenticate anywhere. |
+| Secret detection | fake, inert GitHub PAT and Slack-token-shaped values in `src/demo-secrets.js`; neither can authenticate anywhere. |
 | Code quality | concentrated branching in `decideCreditBand`; intentionally limited test coverage. |
 | SCA / dependency risks | pinned old package versions in `package.json` and resolved dependency graph in `package-lock.json`. |
 | SBOM | `npm run sbom` produces `reports/sbom.cdx.json`; Advanced Security can also export CycloneDX or SPDX from its Dependencies view. |
@@ -23,6 +23,10 @@ A compact Node.js project for demonstrating SonarQube SAST, Security Hotspots, t
 2. Create a SonarQube project using the key in `sonar-project.properties`.
 3. Add `SONAR_TOKEN` as a GitHub Actions secret and `SONAR_HOST_URL` as an Actions variable. For a local scan, export both variables and run `npm run test:coverage && npm run scan`. Do not pass `-Dsonar.sources=.`: the project configuration already separates `src/` from `test/`.
 4. Analyze `main` before opening a PR. Create a small PR that adds or edits an insecure route; the workflow reports only new-code results and the PR Quality Gate.
+
+## Secret Detection demo
+
+`src/demo-secrets.js` contains deliberately invented token-shaped strings for this training project only. After scanning, use **Issues** and filter **Language: Secrets** (or search for `secret`) to show the findings. Explain that a real exposed credential must be revoked, removed from code and history, and replaced by a runtime secret from a secret manager; simply deleting the line is not sufficient.
 
 ## Quality Gate suggested for the demo
 

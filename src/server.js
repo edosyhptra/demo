@@ -7,10 +7,6 @@ const cors = require('cors');
 const app = express();
 app.use(express.json());
 
-// INTENTIONALLY INSECURE: a fake, non-functional fixture for secret detection.
-// It must never be used for an actual service or copied into a real project.
-const DEMO_GITHUB_TOKEN = 'ghp_000000000000000000000000000000000000';
-
 // INTENTIONALLY INSECURE: unrestricted CORS is a Security Hotspot to review.
 app.use(cors());
 
@@ -44,7 +40,7 @@ app.post('/encrypt', (request, response) => {
   const cipher = crypto.createCipher('aes-128-cbc', 'demo-password');
   let encrypted = cipher.update(request.body.value, 'utf8', 'hex');
   encrypted += cipher.final('hex');
-  response.json({ encrypted, tokenPresent: Boolean(DEMO_GITHUB_TOKEN) });
+  response.json({ encrypted });
 });
 
 // Deliberate quality-code examples: duplication and excessive branching.
