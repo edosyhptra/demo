@@ -21,7 +21,7 @@ A compact Node.js project for demonstrating SonarQube SAST, Security Hotspots, t
 
 1. Use Node.js 20 or later, then run `npm install` once to produce the lockfile.
 2. Create a SonarQube project using the key in `sonar-project.properties`.
-3. Add `SONAR_TOKEN` as a GitHub Actions secret and `SONAR_HOST_URL` as an Actions variable. For local scan, export both variables and run `npm run test:coverage && npm run scan`.
+3. Add `SONAR_TOKEN` as a GitHub Actions secret and `SONAR_HOST_URL` as an Actions variable. For a local scan, export both variables and run `npm run test:coverage && npm run scan`. Do not pass `-Dsonar.sources=.`: the project configuration already separates `src/` from `test/`.
 4. Analyze `main` before opening a PR. Create a small PR that adds or edits an insecure route; the workflow reports only new-code results and the PR Quality Gate.
 
 ## Quality Gate suggested for the demo
