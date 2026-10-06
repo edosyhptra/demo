@@ -3,6 +3,7 @@ const { exec } = require('child_process');
 const fs = require('fs');
 const crypto = require('crypto');
 const cors = require('cors');
+const axios = require('axios');
 
 const app = express();
 app.use(express.json());
@@ -24,6 +25,19 @@ app.get('/diagnostics/ping', (request, response) => {
 app.get('/documents', (request, response) => {
   const content = fs.readFileSync(request.query.path, 'utf8');
   response.type('text/plain').send(content);
+});
+
+// INTENTIONALLY INSECURE TRAINING FIXTURE — never invoke or deploy this route.
+// It creates a cross-boundary flow: Express request input -> axios dependency.
+// With Advanced SAST enabled, SonarQube can use dependency implementation context
+// while analyzing this potential server-side request forgery (SSRF) path.
+app.get('/integrations/preview', async (request, response, next) => {
+  try {
+    const upstream = await axios.get(request.query.url);
+    response.json({ status: upstream.status });
+  } catch (error) {
+    next(error);
+  }
 });
 
 // INTENTIONALLY INSECURE: dynamic evaluation is a security hotspot.

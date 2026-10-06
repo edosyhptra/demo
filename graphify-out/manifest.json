@@ -1,0 +1,26 @@
+{
+  "package.json": {
+    "mtime": 1791274709.4370956,
+    "seen": 1791306481.84614,
+    "ast_hash": "9badd98496c8d43d0e8b9f069b13cbce",
+    "semantic_hash": "9badd98496c8d43d0e8b9f069b13cbce"
+  },
+  "src/demo-secrets.js": {
+    "mtime": 1791304329.4027145,
+    "seen": 1791306481.846144,
+    "ast_hash": "81ec17ba1f18e27a9ddf1f9a4f1e601c",
+    "semantic_hash": "81ec17ba1f18e27a9ddf1f9a4f1e601c"
+  },
+  "src/server.js": {
+    "mtime": 1791304329.4303544,
+    "seen": 1791306481.846146,
+    "ast_hash": "9d33ec7de24867ead0ec909cf2fd48c1",
+    "semantic_hash": "9d33ec7de24867ead0ec909cf2fd48c1"
+  },
+  "test/server.test.js": {
+    "mtime": 1791274626.514017,
+    "seen": 1791306481.846146,
+    "ast_hash": "4d474e761b8abfd92820ac50d9c3ec32",
+    "semantic_hash": "4d474e761b8abfd92820ac50d9c3ec32"
+  }
+}

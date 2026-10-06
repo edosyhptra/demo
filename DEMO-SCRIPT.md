@@ -20,6 +20,8 @@ Open `src/demo-secrets.js` and show the fake GitHub PAT / Slack-token-shaped str
 
 With an Enterprise Server license plus Advanced Security, open **Dependencies** and then **Dependency Risks**. Filter a direct dependency risk, explain severity and upgrade path, and export a CycloneDX or SPDX SBOM. Mention that SCA uses manifests and lockfiles; Advanced SAST extends analysis into the open-source dependency interaction surface.
 
+For an Advanced SAST candidate, inspect `/integrations/preview`: user-controlled `url` is passed from Express into the `axios` dependency. After scanning, use only an issue actually raised by your instance to demonstrate Advanced SAST; this route is not proof by itself and must never be invoked.
+
 ## 6. PR enforcement (3 min)
 
 Create branch `demo/new-risk`, add an insecure code line, and open a PR. The GitHub workflow runs tests, coverage, SBOM generation, and Sonar analysis. Its Quality Gate check blocks merge until the introduced issue is fixed. Analyze `main` first so the target-branch baseline exists.

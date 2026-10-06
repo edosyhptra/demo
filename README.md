@@ -15,7 +15,7 @@ A compact Node.js project for demonstrating SonarQube SAST, Security Hotspots, t
 | SCA / dependency risks | pinned old package versions in `package.json` and resolved dependency graph in `package-lock.json`. |
 | SBOM | `npm run sbom` produces `reports/sbom.cdx.json`; Advanced Security can also export CycloneDX or SPDX from its Dependencies view. |
 | CI + PR workflow | `.github/workflows/sonarqube.yml` tests, scans, and lets the repository receive the Quality Gate result. |
-| Advanced SAST | application code that calls into open-source libraries, suitable for the Advanced Security scan. |
+| Advanced SAST candidate | `GET /integrations/preview` passes `req.query.url` into the `axios` dependency, creating an application-to-open-source code boundary for analysis. A finding is dependent on the licensed server's analyzer/rules; do not label it Advanced SAST unless the scan confirms it. |
 
 ## Setup
 
